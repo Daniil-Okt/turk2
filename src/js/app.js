@@ -108,6 +108,7 @@ const swiper = new Swiper('.kwis__swiper', {
     type: 'progressbar',
   },
   autoHeight: true,
+  simulateTouch: false,
 });
 
 // let openKwisButton = document.querySelector('.button-open-kwis')
@@ -116,3 +117,5 @@ const swiper = new Swiper('.kwis__swiper', {
 // openKwisButton.addEventListener ('click', () => {
 //     wrapper.classList.add('openKwis')
 // })
+
+
