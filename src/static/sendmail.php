@@ -17,10 +17,10 @@ $maul->Subject = 'Привет!';
 
 $body = ""
 
-if(trim(!empty($_POST[ 'name' ]))) {
+if(trim(!empty($_POST[ 'tel' ]))) {
     $body.='<p><strong>Телефон:</strong> '.$_POST['tel'].'</p>';
 }
-if(trim(!empty($_POST[ 'email' ]))) {
+if(trim(!empty($_POST[ 'name' ]))) {
     $body.='<p><strong>Имя:</strong> '.$_POST['name'].'</p>';
 }
 

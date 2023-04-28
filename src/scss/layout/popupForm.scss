@@ -123,6 +123,19 @@
     &__input {
         min-width: none;
     }
+    input {
+        border: 2px solid transparent;
+        transition: all 0.3s ease  0s;
+    }
+    input._error {
+        box-shadow: 0px 5px 5px rgba(255, 3, 3, 0.15);
+        border: 2px solid rgba(255, 0, 0, 0.39);
+    }
+    ._error &__chekbox-label::before {
+        box-shadow: 0px 5px 5px rgba(255, 3, 3, 0.15);
+        border: 1px solid rgba(255, 0, 0, 0.39);
+
+    }
 
     &__label-name {
         position: relative;

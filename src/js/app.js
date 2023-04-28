@@ -111,36 +111,91 @@ const swiper = new Swiper('.kwis__swiper', {
   simulateTouch: false,
 });
 
-// let openKwisButton = document.querySelector('.button-open-kwis')
-// let wrapper = document.querySelector('.wrapper')
-
-// openKwisButton.addEventListener ('click', () => {
-//     wrapper.classList.add('openKwis')
-// })
-
-
 // =============================
 
 document.addEventListener('DOMContentLoaded', () => {
   const popupForm = document.getElementById('popupForm')
-  form.addEventListener('submit', formSend)
-  //функция обработки формы
+  popupForm.addEventListener('submit', formSend)
+  
+  // let error = formValidate(popupForm)
+  // функция обработки формы
   async function formSend(e) { 
-    let formData = new FormData(form)
+    e.preventDefault()
 
-    let respomse = await fetch('sendmail.php', {
-      method: 'POST',
-      body: formData
-  })
-  if (respomse.ok) {
-      // получение результата
-      let result = await respomse.json()
-      // вывод пользователю результата
-      alert(result.message)
-      // очищение формы
-      formPriew.innerHTML = ''
-      form.reset()
-      form.classList.remove('__sending')
-    }
+    let formData = new FormData(popupForm)
+    let error = formValidate(popupForm)
+
+    if (error === 0) {
+      //добавление к форме класса загрузки
+      form.classList.add('_sending')
+      //отправка полученных данных с формы в файл php
+      let respomse = await fetch('../static/sendmail.php', {
+          method: 'POST',
+          body: formData
+      })
+      if (respomse.ok) {
+          // получение результата
+          let result = await respomse.json()
+          // вывод пользователю результата
+          alert(result.message)
+          // очищение формы
+          formPriew.innerHTML = ''
+          form.reset()
+          form.classList.remove('__sending')
+      } else {
+          alert("Ошибка")
+          form.classList.remove('__sending')
+      }
+  } else {
+      //если не заполненно можно что то вывечти 
+      // допустим попап "введи обязательные поля"
+      // alert ('введи обязательные поля')
   }
+  }
+
+
+
+  function formValidate(popupForm) {
+    let error = 0;
+    // технический класс который нужно добавиь на те инпуты которые нужно проверять
+    let formReq = document.querySelectorAll('._req')
+    for (let index = 0; index < formReq.length; index++) {
+        const input = formReq[index];
+        //вначале убираем класс error с инпута
+        formRemoveError(input)
+
+        //проверка инпуста с email, нужно добавить класс к инпуту
+
+        if (input.classList.contains('_email')) {
+            //проверка или email соответствует
+            if (emailTest(input)) {
+                //если проверка не прохожит до добавляетм класс ошибки
+                formAddError(input)
+                error++
+            }
+                //проверяем или является чек боксом
+                //проверка что это чекбок       проверка что этот чекбокс не влючен
+            } else if(input.getAttribute("type") === "checkbox" && input.checked === false) {
+                //добавляем к нему класс ошибки 
+                formAddError(input)
+                error++
+            } else if (input.value === '') {
+            //проверка всех остальных инпутов заполнены они или нет
+                formAddError(input)
+                error++
+            }
+        }
+        return error
+    }
+
+
+//функции добавление и удаление класса ошибки
+function formAddError(input) {
+    input.parentElement.classList.add('_error')
+    input.classList.add('_error')
+}
+function formRemoveError(input) {
+    input.parentElement.classList.remove('_error')
+    input.classList.remove('_error')
+}
 })
