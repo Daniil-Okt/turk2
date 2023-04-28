@@ -1,0 +1,147 @@
+// Заголовки, общие БЄМ блоки и проче...
+h1 {
+   
+    @include adaptiveClamp(font-size, 52, 28);
+    @include adaptiveClamp(line-height, 63.39, 34);
+    font-weight: 800;
+    span {
+        font-weight: 500;
+    }
+}
+h2 {
+    @include adaptiveClamp(font-size, 40, 28);
+    @include adaptiveClamp(line-height, 48.76, 34.13);
+    font-weight: 600;
+
+    span {
+        font-weight: 500;
+    }
+}
+
+h3 {
+    @include adaptiveClamp(font-size, 20, 16);
+    @include adaptiveClamp(line-height, 24.38, 34.1319);
+    font-weight: 700;
+}
+p {
+    @include adaptiveClamp(font-size, 16, 14);
+    @include adaptiveClamp(line-height, 19.5, 17.07);
+    font-weight: 500;
+}
+a {
+    @include adaptiveClamp(font-size, 16, 14);
+    @include adaptiveClamp(line-height, 19.5, 17.07);
+    font-weight: 500;
+
+    transition: all 0.3s ease  0s;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+.button {
+    // background: linear-gradient(263.81deg, #f7d46c 98.17%, #FBD916 10.32% ), linear-gradient(263.81deg, #ffe659 10.32%, #F4B603 98.17%);
+    // // background: #FFC858;
+    // // opacity: 0.9;
+    // box-shadow: inset 0px 2px 15px rgba(255, 255, 255, 0.41), inset 19px 0px 25px rgba(255, 255, 255, 0.11);
+    
+    background: #FFC858;
+    box-shadow: inset 0px 2px 15px rgba(255, 255, 255, 0.41), inset 19px 0px 25px rgba(255, 255, 255, 0.11);
+
+    text-align: center;
+
+    @include adaptiveClamp(padding, 35.85, 24.78);
+    @include adaptiveClamp(max-width, 336.24, 232.42);
+    width: 100%;
+
+    transition: all 0.3s ease  0s;
+    
+    @include adaptiveClamp(font-size, 16, 11);
+    // @include adaptiveClamp(line-height, 28, 20);
+    font-weight: 700;
+    color: $whiteColor;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    border-radius: 20px / 100%;
+
+    cursor: pointer;
+    &:hover {
+        opacity: 0.9;
+    } 
+}
+.button.white {
+    background: rgba(255, 255, 255, 0.71);
+    backdrop-filter: blur(7.5px);
+    border: 2px solid #D2A750;
+    color: #A26B00;
+    // box-shadow: inset 0px 2px 15px rgba(255, 255, 255, 0.41), inset 19px 0px 25px rgba(255, 255, 255, 0.11);
+
+    // &:hover {
+
+    // }
+}
+
+input.text {
+    & {
+        position: relative;
+        display: block;
+        width: 100%;
+
+        padding: rem(16.56) rem(16.56) rem(16.56) rem(58.42);
+        background: #FFFFFF;
+        border-radius: 5px;
+    }
+    &, &::placeholder {
+        font-weight: 500;
+        @include adaptiveClamp(font-size, 16, 14);
+        @include adaptiveClamp(line-height, 20, 17);
+
+        color: #666666;
+    }
+}
+textarea {
+    position: relative;
+    display: block;
+    width: 100%;
+
+    padding: rem(16.56) rem(18.42);
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+textarea, textarea::placeholder {
+    font-weight: 500;
+    @include adaptiveClamp(font-size, 16, 14);
+    @include adaptiveClamp(line-height, 20, 17);
+
+    color: #666666;
+}
+label.text {
+    position: relative;
+        &::before {
+            position: absolute;
+            content: '';
+            top: rem(12);
+            left: rem(18.42);   
+            z-index: 10; 
+            width: rem(29);
+            height: rem(29);
+        }
+}
+
+button.button {
+    padding: rem(19.56);
+        max-width: rem(410.28);
+        width: 100%;
+
+        @include adaptiveClamp(font-size, 16, 14);
+        text-align: center;
+        color: #FFFFFF;
+        font-weight: 600;
+
+        background: #75C9EA;
+        border-radius: 5px;
+
+        &:hover {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+}

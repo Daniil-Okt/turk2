@@ -1,0 +1,180 @@
+.popup-form {
+    // position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #303b42a2;
+    z-index: 30;
+    // top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    &__container {
+        // width: 100%;
+    }
+
+    &__row {
+        flex: 0 1 100%;
+        position: relative;
+        max-width: rem(794.18);
+       
+        backdrop-filter: blur(9.5px);
+
+        border-radius: 11px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &::before {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url(@img/popup-form-fon.png) no-repeat center center / cover;
+            border-radius: 11px;
+            z-index: -1;
+        }
+        padding: 0 rem(22);
+        @include adaptiveClamp(padding-top, 45, 23.4);
+        @include adaptiveClamp(padding-bottom, 37.2, 26.5);
+    }
+
+    &__button-close {
+        display: block;
+        position: absolute;
+        top: rem(14.4);
+        right: rem(18);
+        background: none;
+        width: rem(21);
+        height: rem(21);
+        cursor: pointer;
+        // z-index: 10;
+        
+        &::before,
+        &::after {
+        content: "";
+        transition: all 300ms ease 0ms;
+        
+        position: absolute;
+        width: 100%;
+        height: rem(2);
+        background: #303B42;
+        border-radius: 50px;
+        }
+        &::before {
+            top: calc(50% - rem(1));
+            transform: rotate(-45deg);
+            width: 100%;
+        }
+        &::after {
+          bottom: calc(50% - rem(1));
+          transform: rotate(45deg);
+          width: 100%;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        @include adaptiveClamp(font-size, 26, 20);
+        @include adaptiveClamp(line-height, 32, 24);
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__text {
+        @include adaptiveClamp(margin-top, 16, 13.5);
+        font-weight: 600;
+        @include adaptiveClamp(font-size, 20, 16);
+        @include adaptiveClamp(line-height, 24, 20);
+        text-align: center;
+        @media(max-width:720px){
+            font-weight: 500;
+        }
+    }
+
+    &__form {
+        @include adaptiveClamp(margin-top, 44, 28);
+    }
+
+    &__body {
+    }
+
+    &__item {
+        &:not(:last-child) {
+            @include adaptiveClamp(margin-bottom, 26.89, 16.89);
+        }
+        max-width: rem(410.28);
+    }
+
+    &__label {
+    }
+
+    &__label-tel {
+        position: relative;
+        &::before {
+            background: url(@img/popup-icon-tel.svg) no-repeat center center / contain;
+        }
+    }
+
+    &__input {
+        
+    }
+
+    &__label-name {
+        position: relative;
+        &::before {
+            background: url(@img/popup-icon-name.svg) no-repeat center center / contain;
+        }
+    }
+
+    &__input-name {
+    }
+
+    &__textarea {
+        @include adaptiveClamp(min-height, 100, 84.6);
+    }
+
+    &__button.button {
+        background: #E8710C;
+        cursor: pointer;
+        &:active {
+            background: #FE963E;
+        }
+    }
+
+    &__chekbox {
+    }
+
+    &__chekbox-input {
+    }
+
+    &__chekbox-label {
+    }
+}
+.form-kwis {
+
+    &__label {
+    }
+}
+.fpopup-form {
+
+    &__input {
+    }
+}
+.popup-text {
+}
+.chekbox-popup {
+}
+.chekbox-kwis {
+
+    &__input {
+    }
+
+    &__label {
+    }
+}
+

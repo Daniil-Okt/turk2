@@ -1,0 +1,227 @@
+.tours {
+    margin-top: rem(-115.2);
+    @media(max-width:960px){
+        margin-top: rem(-73.49);
+    }
+    position: relative;
+    @include adaptiveClamp(padding-top, 236.5, 122.46);
+    @include adaptiveClamp(padding-bottom, 76.86, 184.22);
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: url(@img/tours-fon.png) no-repeat center center / cover;
+        z-index: 2;
+        min-width: rem(360);
+        @media(max-width:600px){
+            background: url(@img/tours-fon-mob.png) no-repeat center center / cover;
+            background-size: 100%;
+            min-width: rem(360);
+            
+        }
+        @media(max-width:400px){
+            top: rem(10);
+            background: url(@img/tours-fon-mob.png) no-repeat;
+            background-size: 100%;
+            min-width: rem(360);
+            min-height: 100%;
+        }
+    }
+    &__container {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__body {
+    }
+
+    &__title {
+        @include adaptiveClamp(margin-bottom, 9, 20);
+        max-width: rem(631.95);
+
+        color: #014C69;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include adaptiveClamp(font-size, 30, 14.9);
+        @include adaptiveClamp(line-height, 36.75, 19.2);
+        color: #00161F;
+
+        max-width: rem(599.37);
+        span {
+            font-weight: 600;
+
+        }
+    }
+
+    &__button-row {
+        @include adaptiveClamp(margin-top, 40, 30);
+        margin-right: auto;
+        max-width: rem(720);
+        gap: rem(30);
+        display: flex;
+
+        @media(max-width:785px){
+            gap: rem(20);
+            flex-direction: column;
+        }
+    }
+
+    &__button {
+        position: relative;
+        @include adaptiveClamp(font-size, 14, 10);
+        text-transform: none;
+        font-weight: 600;
+        top: 0;
+        padding: rem(31.17) rem(50) rem(31.17) rem(22.91);
+
+        background: linear-gradient(258.15deg, rgba(37, 211, 102, 0.2) 18.65%, rgba(255, 255, 255, 0.2) 22.77%, rgba(37, 211, 102, 0.2) 26.21%), #25D366;
+        border-radius: 11px;
+        max-width: rem(330);
+        @include adaptiveClamp(max-width, 330, 234);
+        width: 100%;
+        color: #FFFFFF;
+
+        &:hover {
+            color: #4F4F4F;
+            opacity: 1;
+            top: rem(-2);
+        }
+        &:active {
+            top: 0;
+            background: linear-gradient(258.15deg, rgba(37, 211, 102, 0.2) 18.65%, rgba(255, 255, 255, 0.2) 22.77%, rgba(37, 211, 102, 0.2) 26.21%), #4BF58B;
+        }
+        @media(max-width:890px){
+            padding: rem(22.16) rem(40) rem(22.16) rem(15);
+        }
+        @media(max-width:760px){
+            padding: rem(19) rem(40) rem(19) rem(15);
+        }
+
+        &::before {
+            position: absolute;
+            content: '';
+            @include adaptiveClamp(width, 40, 28.4);
+            @include adaptiveClamp(height, 40, 28.4);
+            right: rem(15);
+            top: rem(22);
+            background: url(@img/tours-whatsapp-icon.svg) no-repeat center center / contain;
+            
+            @media(max-width:890px){
+                right: rem(10);
+                top: rem(16);
+            }
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 100%;
+            top: rem(3);
+            left: 0;
+            background: #16BC54;
+            border-radius: 11px;
+
+            
+            z-index: -1;
+        }
+    }
+    &__button.blue {
+        background: linear-gradient(258.15deg, rgba(46, 165, 215, 0.2) 18.65%, rgba(255, 255, 255, 0.2) 22.77%, rgba(46, 165, 215, 0.2) 26.21%), #2EA5D7;
+        &:before {
+            background: url(@img/tours-tel-icon.svg) no-repeat center center / contain;
+        }
+        &::after {
+            background: #1A86B4;
+        }
+        &:active {
+            background: linear-gradient(258.15deg, rgba(46, 165, 215, 0.2) 18.65%, rgba(255, 255, 255, 0.2) 22.77%, rgba(46, 165, 215, 0.2) 26.21%), #4ECBFF;
+        }
+    }
+
+    &__row {
+        @include adaptiveClamp(margin-top, 87.03, 241.54);
+        display: flex;
+        margin: 0 rem(-15);
+        
+
+        max-width: rem(900);
+        @media(max-width:560px){
+            margin: 0 rem(-5);    
+            @include adaptiveClamp(margin-top, 87.03, 241.54);   
+        }
+        @media(max-width:345px){
+            flex-wrap: wrap;
+            row-gap: rem(10);
+        }
+    }
+
+    &__item {
+    }
+}
+.blue {
+}
+.item-tours {
+    flex: 0 1 33.33333%;
+    padding: 0 rem(15);
+    max-width: rem(870);
+    @media(max-width:560px){
+        padding: 0 rem(5);
+    }
+    @media(max-width:345px){
+        flex: 0 1 50%;
+    }
+    &__body {
+        padding: rem(12.09) rem(10) rem(12.09) rem(14.46); 
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px);
+        border-radius: 11px;
+        min-height: 100%;
+
+        display: flex;
+        align-items: center;
+        @media(max-width:785px){
+            flex-direction: column;
+            row-gap: rem(7.5);
+            text-align: center;
+            // justify-content: s;
+
+            padding: rem(10); 
+        }
+    }
+
+    &__img {
+        margin-right: rem(10);
+        @include adaptiveClamp(max-width, 49.15, 33.49);
+        img {
+            width: 100%;
+        }
+        @media(max-width:785px){
+            margin-right: rem(0);
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        @include adaptiveClamp(font-size, 16, 10);
+        @include adaptiveClamp(line-height, 20, 12);
+
+        letter-spacing: 0.01em;
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    &:last-child {
+        .item-tours__body {
+            padding: rem(12.09) rem(5) rem(12.09) rem(10.46); 
+        }   
+    }
+}

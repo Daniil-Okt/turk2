@@ -1,0 +1,125 @@
+.cost {
+    @include adaptiveClamp(padding-top, 159, 90.5);
+    &__container {
+    }
+
+    &__title {
+        text-align: center;
+    }
+
+    &__text {
+        @include adaptiveClamp(margin-top, 51.21, 24.58);
+        @include adaptiveClamp(margin-bottom, 44.11, 23.74);
+    }
+
+    &__row-direct {
+        display: flex;
+        row-gap: rem(37.6);
+        margin: 0 rem(-15);
+    }
+
+    &__direct-item {
+    }
+
+    &__row-cost {
+    }
+
+    &__item {
+    }
+}
+.item-direct {
+    flex: 0 1 33.33333%;
+    padding: 0 rem(15);
+
+    &__body {
+        background: #FFFFFF;
+        border-radius: 11px;
+        @include adaptiveClamp(margin-top, 41.11, 22.38);
+        @include adaptiveClamp(margin-left, 17.06, 9.29);
+    }
+
+    &__icon {
+        @include adaptiveClamp(width, 37.81, 20.58);
+        @include adaptiveClamp(height, 37.81, 20.58);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icon-img {
+        @include adaptiveClamp(width, 16.5, 8.98);
+    }
+
+    &__text {
+    }
+
+    &__img {
+    }
+}
+.item-cost {
+
+    &__body {
+    }
+
+    &__img {
+    }
+
+    &__title {
+    }
+
+    &__row {
+    }
+
+    &__item {
+    }
+
+    &__star {
+    }
+
+    &__text {
+    }
+
+    &__buttom-row {
+    }
+
+    &__button {
+    }
+}
+.button {
+}
+.cost-reason {
+}
+.reason-cost {
+
+    &__title {
+    }
+
+    &__row {
+    }
+
+    &__item {
+    }
+}
+.item-reason {
+
+    &__body {
+    }
+
+    &__row-rect {
+    }
+
+    &__rect {
+    }
+
+    &__img {
+    }
+
+    &__title {
+    }
+
+    &__line {
+    }
+
+    &__text {
+    }
+}
