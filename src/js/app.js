@@ -119,3 +119,28 @@ const swiper = new Swiper('.kwis__swiper', {
 // })
 
 
+// =============================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const popupForm = document.getElementById('popupForm')
+  form.addEventListener('submit', formSend)
+  //функция обработки формы
+  async function formSend(e) { 
+    let formData = new FormData(form)
+
+    let respomse = await fetch('sendmail.php', {
+      method: 'POST',
+      body: formData
+  })
+  if (respomse.ok) {
+      // получение результата
+      let result = await respomse.json()
+      // вывод пользователю результата
+      alert(result.message)
+      // очищение формы
+      formPriew.innerHTML = ''
+      form.reset()
+      form.classList.remove('__sending')
+    }
+  }
+})
