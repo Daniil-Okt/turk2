@@ -6,6 +6,10 @@
     // height: 100%;
 
     background: #434343a9;
+
+    input {
+        transition: all 0.3s ease  0s;
+    }
     &__container {
         position: relative;
         max-width: rem(1240);
@@ -15,6 +19,7 @@
     &__row {
         display: flex;
         position: relative;
+        height: 100%;
         // padding: 0 rem(5);
         // top: rem(-50);
         // margin: auto;
@@ -40,7 +45,7 @@
             height: 100%;
             bottom: 0;
             left: 0;
-            background: url(../../images/kwis-fon-mob2.png) no-repeat center bottom / cover;
+            background: url(@img/kwis-fon-mob2.png) no-repeat center bottom / cover;
 
             z-index: -1;
             margin: 0 rem(-20);
@@ -112,11 +117,16 @@
     }
 
     &__progress-text {
+        position: relative;
         margin-bottom: rem(10);
         @include adaptiveClamp(font-size, 14, 12);
         @include adaptiveClamp(line-height, 17, 15);
         font-weight: 600;
         color: #FFC858;
+        z-index: 5;
+        @media(max-width:410px){
+            position: static;
+        }
     }
 
     &__button-row {
@@ -205,7 +215,12 @@
     backdrop-filter: none;
     @media(max-width:720px){
         margin: 0;
+        @include adaptiveClamp(margin-left, 0, 0);
         padding: 0;
+    }
+    @media(max-width:360px){
+        @include adaptiveClamp(margin-left, 0, 0);
+        margin-left: rem(0);
     }
     // justify-content: baseline;
     &::before {
@@ -274,6 +289,8 @@
 
         color: #666666;
         padding-left: rem(20.71);
+
+        cursor: pointer;
 
         &::before {
             position: absolute;
@@ -521,6 +538,7 @@
         padding: rem(16.56) rem(16.56) rem(16.56) rem(58.42);
         background: #FFFFFF;
         border-radius: 5px;
+        border: 2px solid transparent;
     }
     &__input, &__input::placeholder {
         font-weight: 500;
@@ -529,7 +547,11 @@
 
         color: #666666;
     }
+    ._error .chekbox-kwis__label::before {
+        box-shadow: 0px 5px 5px rgba(255, 3, 3, 0.15);
+        border: 1px solid rgba(255, 0, 0, 0.39);
 
+    }
     &__label-tel {
         position: relative;
         &::before {
@@ -581,6 +603,7 @@
 .form {
 
     &__input {
+        transition: all 0.3s ease  0s;
     }
 }
 .chekbox-kwis {
@@ -606,8 +629,10 @@
             left: rem(0);   
             @include adaptiveClamp(width, 20.98, 16.17);
             @include adaptiveClamp(height, 20.98, 16.17);
+            border: 1px solid transparent;
             background: #FFFFFF;
             border-radius: 3px;
+            transition: all 0.3s ease  0s;
         }
         &::after {
             position: absolute;
@@ -750,4 +775,11 @@
 
 
     }
+}
+
+.popup-kwis-grat {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #434343b7;
 }

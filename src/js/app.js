@@ -100,7 +100,7 @@ const swiper = new Swiper('.kwis__swiper', {
   spaceBetween: 100,
 
   navigation: {
-    nextEl: '.kwis__button-for, .form-kwis__button',
+    nextEl: '.kwis__button-for',
     prevEl: '.kwis__button-back',
   },
   pagination: {
@@ -111,54 +111,50 @@ const swiper = new Swiper('.kwis__swiper', {
   simulateTouch: false,
 });
 
+let buttonNext = document.querySelector('.kwis__button-for')
+let optionInput = document.querySelectorAll('.option-kwis__input')
+optionInput.forEach(input => {
+    input.addEventListener('click',  ()=> {
+        if (input.checked) {
+            buttonNext.click()
+        }
+    })
+});
+// let buttonFormKwis = document.querySelector('.form-kwis__button')
+// buttonFormKwis.addEventListener('click', () => {
+//     buttonNext.click()
+// })
 // =============================
-
+// Обработки окна заказа звонка
+let popupGrat = document.querySelector('.popup-kwis-grat')
 document.addEventListener('DOMContentLoaded', () => {
   const popupForm = document.getElementById('popupForm')
+  let popupBody = document.querySelector('.popup-form')
   popupForm.addEventListener('submit', formSend)
-  
-  // let error = formValidate(popupForm)
+
   // функция обработки формы
   async function formSend(e) { 
     e.preventDefault()
 
-    let formData = new FormData(popupForm)
     let error = formValidate(popupForm)
 
-    if (error === 0) {
-      //добавление к форме класса загрузки
-      form.classList.add('_sending')
-      //отправка полученных данных с формы в файл php
-      let respomse = await fetch('../static/sendmail.php', {
-          method: 'POST',
-          body: formData
-      })
-      if (respomse.ok) {
-          // получение результата
-          let result = await respomse.json()
-          // вывод пользователю результата
-          alert(result.message)
-          // очищение формы
-          formPriew.innerHTML = ''
-          form.reset()
-          form.classList.remove('__sending')
-      } else {
-          alert("Ошибка")
-          form.classList.remove('__sending')
-      }
-  } else {
-      //если не заполненно можно что то вывечти 
-      // допустим попап "введи обязательные поля"
-      // alert ('введи обязательные поля')
-  }
-  }
+    let formData = new FormData(popupForm)
 
-
-
-  function formValidate(popupForm) {
+        if (error === 0) {
+        //   отправка полученных данных с формы в файл php
+          let respomse = await fetch('send.php', {
+              method: 'POST',
+              body: formData
+          })
+            popupForm.reset()
+            popupBody.classList.remove('_is-open')
+            popupGrat.classList.add('_is-open')
+        }
+    }
+    function formValidate(popup) {
     let error = 0;
     // технический класс который нужно добавиь на те инпуты которые нужно проверять
-    let formReq = document.querySelectorAll('._req')
+    let formReq = popupBody.querySelectorAll('._req')
     for (let index = 0; index < formReq.length; index++) {
         const input = formReq[index];
         //вначале убираем класс error с инпута
@@ -189,13 +185,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-//функции добавление и удаление класса ошибки
-function formAddError(input) {
-    input.parentElement.classList.add('_error')
-    input.classList.add('_error')
-}
-function formRemoveError(input) {
-    input.parentElement.classList.remove('_error')
-    input.classList.remove('_error')
-}
+    //функции добавление и удаление класса ошибки
+    function formAddError(input) {
+        input.parentElement.classList.add('_error')
+        input.classList.add('_error')
+    }
+    function formRemoveError(input) {
+        input.parentElement.classList.remove('_error')
+        input.classList.remove('_error')
+    }
 })
+
+
+
+
+// Обработки формы квиза
+document.addEventListener('DOMContentLoaded', () => {
+    const formKwis = document.getElementById('form-kwis')
+    let popupKwis = document.querySelector('.kwis')
+    formKwis.addEventListener('submit', formSend)
+    
+    // функция обработки формы
+    async function formSend(e) { 
+      e.preventDefault()
+  
+      let error = formValidate(popupKwis)
+  
+    //   let formData = new FormData(popupKwis)
+  
+        if (error === 0) {
+        //   отправка полученных данных с формы в файл php
+            // let respomse = await fetch('../static/sendmail.php', {
+            //     method: 'POST',
+            //     body: formData
+            // })
+            formKwis.reset()
+            popupKwis.classList.remove('_is-open')
+            popupGrat.classList.add('_is-open')
+        }
+    }
+
+    function formValidate(popup) {
+      let error = 0;
+      // технический класс который нужно добавиь на те инпуты которые нужно проверять
+      let formReq = popupKwis.querySelectorAll('._req')
+      for (let index = 0; index < formReq.length; index++) {
+          const input = formReq[index];
+          //вначале убираем класс error с инпута
+          formRemoveError(input)
+  
+          //проверка инпуста с email, нужно добавить класс к инпуту
+  
+          if (input.classList.contains('_email')) {
+              //проверка или email соответствует
+              if (emailTest(input)) {
+                  //если проверка не прохожит до добавляетм класс ошибки
+                  formAddError(input)
+                  error++
+              }
+                  //проверяем или является чек боксом
+                  //проверка что это чекбок       проверка что этот чекбокс не влючен
+              } else if(input.getAttribute("type") === "checkbox" && input.checked === false) {
+                  //добавляем к нему класс ошибки 
+                  formAddError(input)
+                  error++
+              } else if (input.value === '') {
+              //проверка всех остальных инпутов заполнены они или нет
+                  formAddError(input)
+                  error++
+              }
+          }
+          return error
+      }
+  
+  
+  //функции добавление и удаление класса ошибки
+  function formAddError(input) {
+      input.parentElement.classList.add('_error')
+      input.classList.add('_error')
+  }
+  function formRemoveError(input) {
+      input.parentElement.classList.remove('_error')
+      input.classList.remove('_error')
+  }
+  })
+

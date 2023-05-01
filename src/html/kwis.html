@@ -1,5 +1,7 @@
 <div class="kwis _overlay-bg" data-popup="kwis" >
     <div class="kwis__container">
+        <form action="#" class="form-kwis__body" id="form-kwis">
+
         <div class="kwis__swiper swiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -10,7 +12,6 @@
                                 <h3>Сколько ночей планируете отдыхать?</h3>
                             </div>
                             <div class="form-kwis-item1 kwis__form form-kwis ">
-                                <form action="#" class="form-kwis__body" id="form-kwis">
                                     <div class="form-kwis__option option-kwis">
                                         <div class="option-kwis__item">
                                             <div class="option-kwis__item-body">
@@ -37,7 +38,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                             <div class="kwis__img">
                                 <img src="@img/kwis-fon.png" alt="">
@@ -77,7 +77,6 @@
                                 <h3>Сколько ночей планируете отдыхать?</h3>
                             </div>
                             <div class="kwis__form form-kwis form-kwis-item1">
-                                <form action="#" class="form-kwis__body" id="form-kwis">
                                     <div class="form-kwis__option option-kwis">
                                         <div class="option-kwis__item">
                                             <div class="option-kwis__item-body">
@@ -104,7 +103,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                             <div class="kwis__img">
                                 <img src="@img/kwis-fon.png" alt="">
@@ -141,59 +139,58 @@
                         <div class="popup-form__button-close button-close"></div>
                         <div class="kwis__wrap">
                             <div class="kwis__form form-kwis">
-                                <form action="#" class="form-kwis__body" id="form-kwis">
                                     <div class="form-kwis__title">Спасибо, вся информация принята!</div>
                                     <div class="form-kwis__text">Оставьте свой номер <span>WhatsApp</span> , и наш менеджер отправит 
                                         туда варианты туров</div>
                                     <div class="form-kwis__item">
                                         <label for="formKwisTel" class="form-kwis__label form-kwis__label-tel"></label>
-                                        <input type="text" id="formKwisTel" name="name" class="form-kwis__input " placeholder="Ваш телефон">
+                                        <input type="text" id="formKwisTel" name="name" class="form-kwis__input _req" placeholder="Ваш телефон">
                                     </div>
                                     <div class="form-kwis__item">
                                         <label for="formKwisName" class="form-kwis__label form-kwis__label-name"></label>
-                                        <input type="text" id="formKwisName" name="name" class="form-kwis__input form-kwis__input-name" placeholder="Ваше имя">
+                                        <input type="text" id="formKwisName" name="name" class="form-kwis__input form-kwis__input-name _req" placeholder="Ваше имя">
                                     </div>
                                     <div class="form-kwis__item">
                                         <button type="submit" class="form-kwis__button">Получить подборку</button>
                                     </div>
                                     <div class="form-kwis__item">
                                         <div class="chekbox-kwis">
-                                            <input type="checkbox" id="formKwisAgreement" name="agreement" class="chekbox-kwis__input">
+                                            <input checked type="checkbox" id="formKwisAgreement" name="agreement" class="chekbox-kwis__input _req">
                                             <label for="formKwisAgreement" class="chekbox-kwis__label"><span>С Положением об обработке персональных данных и Политикой конфиденциальности</span> ознакомлен и согласен</label>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="kwis__row kwis__row-form">
-                        <div class="popup-form__button-close button-close"></div>
-                    <div class="kwis__wrap kwis__wrap-grat grat-kwis">
-                        <div class="grat-kwis__row">
-                            <div class="grat-kwis__img">
-                                <img src="@img/grat-img.png" alt="">
-                            </div>
-                            <div class="grat-kwis__body">
-                                <div class="grat-kwis__title">Спасибо за доверие!</div>
-                                <div class="grat-kwis__text">
-                                    <p>Ваше обращение уже в работе. 
-                                        В ближайшее время с вами свяжется наш менеджер, чтобы уточнить детали и отправить подборку.</p>
-                                    <p>А пока подпишитесь на наш телеграмм чтобы быть в курсе всех горящих предложений</p>
-                                </div>
-                                <div class="grat-kwis__button-row">
-                                    <a href="https://t.me/travel021_bot" class="grat-kwis__button">
-                                        Подписаться
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
                 </div>
             </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="popup-kwis-grat _overlay-bg" data-popup="kwisGrat">
+    <div class="kwis__container">
+        <div class="popup-form__button-close button-close"></div>
+        <div class="kwis__wrap kwis__wrap-grat grat-kwis">
+            <div class="grat-kwis__row">
+                <div class="grat-kwis__img">
+                    <img src="@img/grat-img.png" alt="">
+                </div>
+                <div class="grat-kwis__body">
+                    <div class="grat-kwis__title">Спасибо за доверие!</div>
+                    <div class="grat-kwis__text">
+                        <p>Ваше обращение уже в работе. 
+                            В ближайшее время с вами свяжется наш менеджер, чтобы уточнить детали и отправить подборку.</p>
+                        <p>А пока подпишитесь на наш телеграмм чтобы быть в курсе всех горящих предложений</p>
+                    </div>
+                    <div class="grat-kwis__button-row">
+                        <a target="_blank" href="https://t.me/travel021_bot" class="grat-kwis__button">
+                            Подписаться
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

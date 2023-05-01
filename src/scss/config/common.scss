@@ -38,6 +38,11 @@ a {
         opacity: 0.7;
     }
 }
+.menu__link {
+    @include adaptiveClamp(font-size, 16, 14);
+    @include adaptiveClamp(line-height, 19.5, 17.07);
+    font-weight: 500;
+}
 .button {
     // background: linear-gradient(263.81deg, #f7d46c 98.17%, #FBD916 10.32% ), linear-gradient(263.81deg, #ffe659 10.32%, #F4B603 98.17%);
     // // background: #FFC858;
@@ -99,6 +104,10 @@ input.text {
         color: #666666;
     }
 }
+input._error {
+    box-shadow: 0px 5px 5px rgba(255, 3, 3, 0.15);
+        border: 2px solid rgba(255, 0, 0, 0.39);
+}
 textarea {
     position: relative;
     display: block;
@@ -145,3 +154,6 @@ button.button {
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         }
 }
+* {
+    -webkit-tap-highlight-color: transparent;
+  }
