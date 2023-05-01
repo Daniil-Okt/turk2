@@ -39,7 +39,8 @@ try {
     $mail->Port       = 465;
     $mail->setFrom('postmaster@web-divingstudio.by', 'Pegas'); 
     // Получатель письма
-    $mail->addAddress('danikoktysyk@gmail.com');  
+    $mail->addAddress('it.business.systems@gmail.com');  
+    $mail->addAddress('21pegas@mail.ru'); 
 
 // Отправка сообщения
 $mail->isHTML(true);
