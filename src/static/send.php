@@ -8,17 +8,21 @@ require 'phpmailer/Exception.php';
 $name = $_POST['name'];
 $email = $_POST['email'];
 $phone = $_POST['tel'];
-$text = $_POST['text']
+$text = $_POST['text'];
+$option = $_POST['nights'];
+$option2 = $_POST['nights2'];
+
 
 // Формирование самого письма
 $title = "Pegas Турция";
 $body = "
 <h2>Заявка с сайта</h2>
 <b>Имя:</b> $name<br>
-<b>Телефон:</b> $phone<br><br>
-
+<b>Телефон:</b> $phone<br>
+<b>Пожелания:</b> $text<br>
+<b>Количество ночей:</b> $option<br>
+<b>Количество ночей:</b> $option2<br><br>
 ";
-
 // Настройки PHPMailer
 $mail = new PHPMailer\PHPMailer\PHPMailer();
 try {
@@ -29,11 +33,11 @@ try {
     $mail->Debugoutput = function($str, $level) {$GLOBALS['status'][] = $str;};
 
     $mail->Host       = 'mailbe05.hoster.by'; 
-    $mail->Username   = 'web-prog-dn@mail.com'; 
-    $mail->Password   = 'p4YM1yte^ePE';
+    $mail->Username   = 'postmaster@web-divingstudio.by'; 
+    $mail->Password   = 'Vitaly97';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
-    $mail->setFrom('web-prog-dn@mail.com', 'Pegas'); 
+    $mail->setFrom('postmaster@web-divingstudio.by', 'Pegas'); 
     // Получатель письма
     $mail->addAddress('danikoktysyk@gmail.com');  
 

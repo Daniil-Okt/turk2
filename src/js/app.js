@@ -93,23 +93,37 @@ useDynamicAdapt()
 // spollerInit()
 
 // =======================================================================================================
+function initKwis() {
+    const swiper = new Swiper('.kwis__swiper', {
+        modules: [Pagination, Navigation],
+        speed: 400,
+        spaceBetween: 100,
+      
+        navigation: {
+          nextEl: '.kwis__button-for',
+          prevEl: '.kwis__button-back',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'progressbar',
+        },
+        autoHeight: true,
+        simulateTouch: false,
+      });
+}
 
-const swiper = new Swiper('.kwis__swiper', {
-  modules: [Pagination, Navigation],
-  speed: 400,
-  spaceBetween: 100,
 
-  navigation: {
-    nextEl: '.kwis__button-for',
-    prevEl: '.kwis__button-back',
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    type: 'progressbar',
-  },
-  autoHeight: true,
-  simulateTouch: false,
-});
+let popupKwis = document.querySelector('.kwis')
+let buttonKwisOpen = document.querySelectorAll('.tours__button-open-kwis')
+if (buttonKwisOpen.length >0) {
+    buttonKwisOpen.forEach(button => {
+        button.addEventListener('click', () => {
+            initKwis()
+            // popupKwis.classList.add('_is-open')
+            
+        })
+    });
+}
 
 let buttonNext = document.querySelector('.kwis__button-for')
 let optionInput = document.querySelectorAll('.option-kwis__input')
@@ -120,18 +134,14 @@ optionInput.forEach(input => {
         }
     })
 });
-// let buttonFormKwis = document.querySelector('.form-kwis__button')
-// buttonFormKwis.addEventListener('click', () => {
-//     buttonNext.click()
-// })
 // =============================
 // Обработки окна заказа звонка
-let popupGrat = document.querySelector('.popup-kwis-grat')
+const url = 'static/send.php'
+const popupGrat = document.querySelector('.popup-kwis-grat')
 document.addEventListener('DOMContentLoaded', () => {
   const popupForm = document.getElementById('popupForm')
   let popupBody = document.querySelector('.popup-form')
   popupForm.addEventListener('submit', formSend)
-
   // функция обработки формы
   async function formSend(e) { 
     e.preventDefault()
@@ -142,13 +152,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (error === 0) {
         //   отправка полученных данных с формы в файл php
-          let respomse = await fetch('send.php', {
+          fetch(url, {
               method: 'POST',
               body: formData
           })
+          .then(response => {
+            if (response.ok) {
+              // Обработка успешной отправки формы
+              console.log('Form was submitted successfully!');
+              popupGrat.classList.add('_is-open')
+            } else {
+              // Обработка ошибок отправки формы
+              console.log('An error occurred while submitting the form.');
+            }
+          })
+          .catch(error => {
+            console.log('An error occurred while submitting the form:', error);
+          });
+      
             popupForm.reset()
             popupBody.classList.remove('_is-open')
-            popupGrat.classList.add('_is-open')
         }
     }
     function formValidate(popup) {
@@ -202,26 +225,38 @@ document.addEventListener('DOMContentLoaded', () => {
 // Обработки формы квиза
 document.addEventListener('DOMContentLoaded', () => {
     const formKwis = document.getElementById('form-kwis')
-    let popupKwis = document.querySelector('.kwis')
-    formKwis.addEventListener('submit', formSend)
     
+    formKwis.addEventListener('submit', formSend)
+
     // функция обработки формы
     async function formSend(e) { 
       e.preventDefault()
   
-      let error = formValidate(popupKwis)
+      let error = formValidate(formKwis)
   
-    //   let formData = new FormData(popupKwis)
+      let formData2 = new FormData(formKwis)
   
         if (error === 0) {
         //   отправка полученных данных с формы в файл php
-            // let respomse = await fetch('../static/sendmail.php', {
-            //     method: 'POST',
-            //     body: formData
-            // })
+            fetch(url, {
+                method: 'POST',
+                body: formData2
+            })
+            .then(response => {
+              if (response.ok) {
+                // Обработка успешной отправки формы
+                console.log('Form was submitted successfully!');
+                popupGrat.classList.add('_is-open')
+              } else {
+                // Обработка ошибок отправки формы
+                console.log('An error occurred while submitting the form.');
+              }
+            })
+            .catch(error => {
+              console.log('An error occurred while submitting the form:', error);
+            });
             formKwis.reset()
             popupKwis.classList.remove('_is-open')
-            popupGrat.classList.add('_is-open')
         }
     }
 
